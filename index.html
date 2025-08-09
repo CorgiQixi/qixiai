@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七喜的画板</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>七喜的画板</h1>
+            <p class="subtitle">输入提示词，选择尺寸，一键生成独特图像</p>
+        </header>
+
+        <div class="app-container">
+            <div class="card">
+                <h2 class="panel-title">
+                    <i class="fas fa-sliders-h"></i> 控制面板
+                </h2>
+                
+                <div class="form-group">
+                    <label for="prompt">
+                        <i class="fas fa-comment-dots"></i> 图像描述
+                    </label>
+                    <textarea 
+                        id="prompt" 
+                        class="prompt-input" 
+                        rows="4" 
+                        placeholder="输入图像描述"
+                    ></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-expand-alt"></i> 图像尺寸
+                    </label>
+                    <div class="size-selection">
+                        <div class="size-option active" data-size="landscape">
+                            <i class="fas fa-desktop"></i>
+                            <div>横版</div>
+                            <div class="size-desc">1024×768</div>
+                        </div>
+                        <div class="size-option" data-size="portrait">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>竖版</div>
+                            <div class="size-desc">768×1024</div>
+                        </div>
+                        <div class="size-option" data-size="square">
+                            <i class="fas fa-square"></i>
+                            <div>方形</div>
+                            <div class="size-desc">1024×1024</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="generate-btn" class="generate-btn">
+                    <i class="fas fa-magic"></i> 生成图像
+                </button>
+            </div>
+            
+            <div class="image-container">
+                <div class="card">
+                    <h2 class="panel-title">
+                        <i class="fas fa-image"></i> 生成结果
+                    </h2>
+                    
+                    <div class="result-image">
+                        <div class="placeholder" id="image-placeholder">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            图像生成区域
+                            <p style="font-size:0.9rem; margin-top:15px; color:#777;">输入描述并点击生成按钮</p>
+                        </div>
+                        
+                        <div class="loading-overlay" id="loading-overlay">
+                            <div class="loading-spinner"></div>
+                            <div class="loading-text">图像加载中...</div>
+                        </div>
+                        
+                        <iframe id="generated-iframe"></iframe>
+                    </div>
+                    
+                    <div class="image-actions" id="image-actions" style="display: none;">
+
+                        <button class="action-btn" id="new-tab-btn">
+                            <i class="fas fa-external-link-alt"></i> 新标签页打开
+                        </button>
+                        <button class="action-btn" id="copy-btn">
+                            <i class="fas fa-copy"></i> 复制链接
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>七喜的画板 &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
